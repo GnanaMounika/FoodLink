@@ -1,0 +1,145 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <title>Car Pooling</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav" style="width:100%;">
+          <ul class="navbar-nav">
+            <li class="nav-item" id="driver-nav" onclick="changeNavigation('#driver')">
+              <a class="nav-link" href="#"><i class="fa-solid fa-car"></i> Driver <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" id="rider-nav" onclick="changeNavigation('#rider')">
+              <a class="nav-link" href="#"><i class="fa-solid fa-user-alt"></i> Rider <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" id="upcoming-nav" onclick="changeNavigation('#upcoming')">
+              <a class="nav-link" href="#"><i class="fa-solid fa-calendar"></i> Upcoming</a>
+            </li>
+            <li class="nav-item" id="history-nav" onclick="changeNavigation('#history')">
+              <a class="nav-link" href="#"><i class="fa-solid fa-history"></i> All Rides</a>
+            </li>
+
+            <li class="nav-item" onclick = "logout()" style="margin-right:0px" id="history-nav">
+              <a class="nav-link">Logout<i class="fa-solid fa-sign-out"></i> </a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+
+
+      <div id="driver" class="row">
+        <div class="col-4">
+          <div>
+            <div id="driver-form-div">
+              <form id="driver-form">
+                <div>
+                  <div class="form-group pt-2">
+                    <label class="font-weight-bold" for="registrationNumber">License Number</label>
+                    <input type="text" class="form-control" id="registrationNumber" name="registrationNumber" placeholder="License Number">
+                  </div>
+                  <div class="form-group pt-2">
+                    <label class="font-weight-bold" for="seater">Total Seats</label>
+                    <input type="number" class="form-control" id="seater" name="seater" placeholder="Total Seats">
+                  </div>
+                  <div class="form-group pt-2">
+                    <label class="font-weight-bold" for="driver-from">From</label>
+                    <input class="form-control" id="driver-from" name="driver-from" placeholder="From">
+                  </div>
+                  <div class="form-group pt-2">
+                    <label class="font-weight-bold" for="driver-to">To</label>
+                    <input class="form-control" id="driver-to" name="driver-to" placeholder="To">
+                  </div>
+                  <input type="hidden" id="origin_lat" value="" name="origin_lat">
+                  <input type="hidden" id="destination_lat" value="" name="destination_lat">
+                  <input type="hidden" id='origin_lng' value="" name="origin_lng">
+                  <input type="hidden" id="destination_lng" value="" name="destination_lng">
+                </div>
+              </form>
+              <div class="text-center pt-2">
+                <button type="text" onclick="getWayPoints(event)" class="btn btn-primary pt-2">Get Directions</button>
+              </div>
+            </div>
+
+            <div id="driver-routes" class="driver-list-group" class="list-group" style="margin-top:15px">
+              <a onclick="changeActiveForDriverRoute('#driver-path-1')" id="driver-path-1" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 id="driver-path-1-summary" class="mb-1">golden gate road</h5>
+                  <small id="driver-path-1-distance">5 miles</small>
+                </div>
+                <p id="driver-path-1-time" class="mb-1">Time</p>
+                <p id="driver-path-1-speed" class="mb-1">Speed</p>
+              </a>
+              <div class="text-center pt-2">
+                <button type="text" onclick="driverRouteCancel()" class="btn btn-primary pt-2">Cancel</button>
+                <button type="text" onclick="storeDriverRoutes()" class="btn btn-primary pt-2">Start Ride</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-8">
+          <div id="driver-map"></div>
+        </div>
+      </div>
+
+      <div id="rider" class="row">
+        <div class="col-4">
+          <div>
+            <form id="rider-form">
+              <div>
+                <div class="form-group pt-4">
+                  <label class="font-weight-bold" for="rider-from">From</label>
+                  <input type="text" class="form-control" id="rider-from" name="rider-from" aria-describedby="From" placeholder="From">
+                </div>
+                <div class="form-group pt-4">
+                  <label class="font-weight-bold" for="rider-to">To</label>
+                  <input type="text" class="form-control" id="rider-to" name="rider-to" aria-describedby="To" placeholder="To">
+                </div>
+                <!-- <div class="text-center pt-2">
+                  <button type="submit" class="btn btn-primary pt-2">Search Cars</button>
+                </div> -->
+
+              </div>
+            </form>
+            <div class="text-center pt-2">
+              <button type="text" onclick="getRoutsForRider()" class="btn btn-primary pt-2">Search Ride</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <div id="rider-map"></div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdQ3Jx0mPk6J9vNVdKN-tSDCM5eYk9abs&libraries=places"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9a2dcefa1d.js" crossorigin="anonymous"></script>
+
+    <!-- <script src="./js/index.js"></script> -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>

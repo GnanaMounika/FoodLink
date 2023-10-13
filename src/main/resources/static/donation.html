@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donation Information</title>
+    <script>
+    function redirectToPage()
+    {
+        window.location.href = "donar.html";
+    }
+     function exitpage()
+    {
+        window.location.href = "index.html";
+    }
+      function showDiv(elem) {
+        if(elem.value == "option1") {
+          document.getElementById('div1').style.display = "block";
+          document.getElementById('div2').style.display = "none";
+        } else if(elem.value == "option2") {
+          document.getElementById('div1').style.display = "none";
+          document.getElementById('div2').style.display = "block";
+        } else {
+          document.getElementById('div1').style.display = "none";
+          document.getElementById('div2').style.display = "none";
+        }
+      }
+    </script>
+    <style>
+		body {
+            background-image: url('background.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+        }
+        header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+        .center {
+            text-align: center;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+        }
+
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+        }
+
+        select {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the on-off switch container */
+        .onoff-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide the default checkbox */
+        .onoff-switch input {
+            display: none;
+        }
+
+        a {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #2196f3;
+            text-decoration: none;
+            border-bottom: 1px solid #2196f3;
+        }
+
+        a:hover {
+            background-color: #2196f3;
+            color: #fff;
+        }
+
+        /* Style the on-off switch slider */
+        .onoff-switch .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #7CFC00;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        /* Style the on-off switch slider when on */
+        .onoff-switch input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        /* Style the on-off switch slider when off */
+        .onoff-switch input:not(:checked) + .slider {
+            background-color: #2196f3;
+        }
+
+        /* Style the on-off switch slider's indicator */
+        .onoff-switch .slider::before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        /* Style the on-off switch slider's indicator when on */
+        .onoff-switch input:checked + .slider::before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+		/* Style the on-off switch labels */
+		.onoff-switch .onoff-label {
+		  position: absolute;
+		  top: 50%;
+		  transform: translateY(-50%);
+		  font-size: 12px;
+		  font-weight: bold;
+		  text-transform: uppercase;
+		  color: #28282B;
+		  transition: opacity .4s;
+		}
+
+		/* Hide the "Off" label when on */
+		.onoff-switch input:checked + .slider + .onoff-label:first-child {
+		  opacity: 0;
+		}
+
+		/* Hide the "On" label when off */
+		.onoff-switch input:not(:checked) + .slider + .onoff-label:last-child {
+		  opacity: 0;
+		}
+
+		h1, h2 {
+		  margin-top: 0;
+		}
+
+		h2 {
+		  margin-bottom: 16px;
+		}
+
+		p {
+		  margin-top: 0;
+		  margin-bottom: 16px;
+		}
+
+		select {
+		  margin-bottom: 16px;
+		}
+
+		.onoff-switch {
+		  margin-bottom: 16px;
+		}
+
+	</style>
+</head>
+<body>
+<header>
+    <h1>Donation Information</h1>
+</header>
+<form>
+    <label for="menu">Please select: </label>
+    <select id="menu" name="menu" onchange="showDiv(this);">
+        <option value="">Select an option:</option>
+        <option value="option1">Existing Donation</option>
+        <option value="option2">New Donation</option>
+    </select>
+</form>
+<div id="div1" style="display:none;">
+    <h2>Existing Donation</h2>
+    <p>Please update the food availability</p>
+    <label class="onoff-switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+        <span class="onoff-label">Off</span>
+    </label>
+    <p>Redirecting to home page:</p>
+    <button onclick = "exitpage()"> Home</button>
+    <p>Or please continue to fill up new donation information</p>
+    <button onclick = "redirectToPage()"> Please click here</button>
+
+
+</div>
+<div id="div2" style="display:none;">
+    <h2>New Donation</h2>
+    <p>Please fill up the required information</p>
+    <button onclick = "redirectToPage()"> Please click here</button>
+</div>
+
+</body>
+</html>

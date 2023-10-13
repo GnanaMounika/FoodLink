@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+
+
+  <title>GRAB-COMM</title>
+
+  <script>
+    function redirectToPage()
+    {
+        window.location.href = "donation.html";
+    }
+    </script>
+  <style>
+    .button-container
+    {
+
+      float: right;
+    }
+  </style>
+
+
+</head>
+<body>
+<header>
+  <h1>Share your food, share your love!!</h1>
+</header>
+<div class="container">
+  <div class="image">
+    <div style="width: 100%; height: auto; border: 1px solid black; object-fit: cover"></div>
+    <img src="about.jpg">
+  </div>
+  <div class="text">
+    <h1 >What we do </h1>
+    <p> Welcome to GRUB COMM, a community-driven platform that aims to tackle two of the most pressing issues of our time: food waste and hunger.
+      At GRUB COMM, we believe that no one should go hungry while good food is going to waste. We are passionate about creating a world where surplus food can find its way to those who need it, and where food waste is minimized, and we are committed to making it happen. Our platform is designed to make food donation and redistribution easy, efficient, and safe. Whether you are an individual,
+      a business, or a community organization, you can use GRUB COMM to donate or claim food donations, and to connect with other members of the community who share your values and vision.
+    </p>
+  </div>
+  <hr/>
+</div>
+<div class ="line">
+  <span class="line-text"> Find places that are donating food !!  </span>
+</div>
+<br>
+
+<div id="line">
+  <div class="col-4">
+    <!--<div class="col-12 d-flex justify-content-center">-->
+      <div class="col-12 d-flex ">
+      <form id="driver-form" class="d-flex justify-content-center">
+        <div class="form-group d-flex justify-content-center align-items-center">
+          <label class="font-weight-bold mr-3" for="driver-from">Search Location</label>
+          <input class="form-control mr-3" id="driver-from" name="driver-from" placeholder="Area Code">
+          <button type="text" onclick="getLocationPoints(event)" class="btn btn-primary">Get Places</button>
+        </div>
+
+        <input type="hidden" id='origin_lng' value="" name="origin_lng">
+      </form>
+    </div>
+  </div>
+
+  <div class="button-container">
+
+
+    <button onclick = "redirectToPage()" class="button-container btn btn-primary"> Donate Here</button>
+
+  </div>
+  <div>
+    <div id="driver-map"></div>
+  </div>
+
+
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdQ3Jx0mPk6J9vNVdKN-tSDCM5eYk9abs&libraries=places&callback=Function.prototype"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/9a2dcefa1d.js" crossorigin="anonymous"></script>
+
+<!-- <script src="./js/index.js"></script> -->
+<script src="./js/index.js"></script>
+</body>
+</html>
