@@ -1,5 +1,4 @@
 package com.example.FoodLink.APIController;
-package com.inrix.carpool.trip.buddy.controllers
 
 import com.google.gson.Gson
 import com.inrix.carpool.trip.buddy.Services.MatchService
